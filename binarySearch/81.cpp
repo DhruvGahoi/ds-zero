@@ -5,7 +5,7 @@ public:
     int findPivot(vector<int>& nums, int n){
         int left = 0;
         int right = n - 1;
-        
+        // Checking the Duplicates
         while(left < right){
             while(left < right && nums[left] == nums[left + 1]){
                 left++;
