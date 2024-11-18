@@ -14,9 +14,13 @@ int dp[1000];
 
 int func(int n) {
     if(n < 0) return 0; // No way we can get sum 0
+
     if(n == 0) return 1; // Only 1 way where we can get sum 0
+
     if (dp[n] != -1) return dp[n]; // Return already computed result
+
     dp[n] = 0; // Initiating everything with 0
+
     for(int i = 0; i <= 6; i++) {
         dp[n] += func(n - i);      // Add ways to form (n - i)
     }
@@ -25,7 +29,7 @@ int func(int n) {
 }
 
 void solve() {
-        int n;
+    int n;
     cin >> n;
 
     // Initialize DP table with -1
