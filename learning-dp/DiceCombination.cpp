@@ -36,6 +36,7 @@ void solve() {
     for (int i = 0; i <= n; i++) {
         dp[i] = -1;
     }
+    
     cout << func(n) << endl;
 }
 
