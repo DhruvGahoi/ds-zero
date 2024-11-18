@@ -17,7 +17,7 @@ int func(int i, int j) {
     }
 
     if (i == n - 1 && j == m - 1) {
-        return grid[i][j];
+        return grid[i][j]; //Value at that point
     }
 
     if (dp[i][j] != -1) {
