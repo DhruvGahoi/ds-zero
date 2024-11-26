@@ -23,3 +23,6 @@ class Solution {
             return ls;
         }
 }
+
+// SC : O(n) + O(n) + O(n)
+// TC : O(n) + O(2*E)
