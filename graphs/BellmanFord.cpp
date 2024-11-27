@@ -18,7 +18,7 @@ class Solution {
                 }
             }
         }
-        
+        // If the dist[] keeps updating after N-1 iteration then its a negative cycle in the graph
         for(auto it : edges){
             int u = it[0];
             int v = it[1];
