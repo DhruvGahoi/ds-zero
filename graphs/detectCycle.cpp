@@ -43,3 +43,52 @@ class Solution {
         return false; 
     }
 };
+
+
+// DFS
+
+class Solution {
+private:
+    int dirX[4] = {-1, 1, 0, 0};
+    int dirY[4] = {0, 0, -1, 1};
+
+    bool dfs(int x, int y, vector<vector<char>>& grid, vector<vector<bool>>& visited, int parentX, int parentY) {
+        visited[x][y] = true;
+        for (int i = 0; i < 4; i++) {
+            int newX = x + dirX[i];
+            int newY = y + dirY[i];
+
+            if (newX >= 0 && newX < grid.size() && newY >= 0 && newY < grid[0].size()) {
+                if (grid[newX][newY] == grid[x][y]) {
+                    if (!visited[newX][newY]) {
+                        if (dfs(newX, newY, grid, visited, x, y)) {
+                            return true;
+                        }
+                    } 
+                    else if (newX != parentX || newY != parentY) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+public:
+    bool containsCycle(vector<vector<char>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+
+        vector<vector<bool>> visited(m, vector<bool>(n, false));
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!visited[i][j]) {
+                    if (dfs(i, j, grid, visited, -1, -1)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+};
