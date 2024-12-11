@@ -50,12 +50,11 @@ class Solution {
             reverseVector(nums, k, n - 1);
         }
         void reverseVector(vector<int>& nums, int start, int end) {
-        while (start < end) {
-            swap(nums[start], nums[end]);
-            start++;
-            end--;
+            while (start < end) {
+                swap(nums[start], nums[end]);
+                start++;
+                end--;
+            }
         }
-
-    }
 
 };
