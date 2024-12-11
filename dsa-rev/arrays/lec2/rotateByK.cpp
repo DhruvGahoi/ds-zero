@@ -33,3 +33,29 @@ int main(){
         cout << arr[i] << " ";
     }
 }
+
+
+// LC - 189
+// Link - https://leetcode.com/problems/rotate-array
+
+class Solution {
+    public:
+
+        void rotate(vector<int>& nums, int k) {
+            int n = nums.size();
+            k %= n;
+
+            reverseVector(nums, 0, n - 1);
+            reverseVector(nums, 0, k - 1);
+            reverseVector(nums, k, n - 1);
+        }
+        void reverseVector(vector<int>& nums, int start, int end) {
+        while (start < end) {
+            swap(nums[start], nums[end]);
+            start++;
+            end--;
+        }
+
+    }
+
+};
