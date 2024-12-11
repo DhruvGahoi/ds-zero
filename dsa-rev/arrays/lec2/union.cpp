@@ -5,6 +5,7 @@ vector<int> sortedArray(vector<int>& a, vector<int>& b) {
     int n = a.size();
     int m = b.size();
     int i = 0, j = 0;
+    
     vector<int> unionArr;
     
     while(i < n && j < m){
