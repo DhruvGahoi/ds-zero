@@ -1,5 +1,8 @@
 // Find First & Last Position Of Element In Sorted Array
 
+
+// Whenever you got SORTED ARRAY --> It's a BINARY SEARCH
+
 class Solution {
 public:
     int findLeftMost(vector<int>& nums, int target, int n){
