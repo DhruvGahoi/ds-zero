@@ -35,7 +35,8 @@ public:
                 continue;
             }
 
-            int index = BS(0, n - 1, potions, minPotion); //lower_bound(begin(potions), end(potions), minPotion) - begin(potions);
+            int index = BS(0, n - 1, potions, minPotion); 
+            //lower_bound(begin(potions), end(potions), minPotion) - begin(potions);
             answer.push_back(n - index);
         }
 
