@@ -15,16 +15,21 @@
 class Solution {
 public:
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-        // will store the 
+        // will store the (vertical, level, multiNodes in that level)
         map<int, map<int, multiset<int>>> nodes;
+        // Queue(node, verticalLine, level)
         queue<pair<TreeNode*, pair<int, int>>> todo;
         todo.push({root, {0, 0}});
 
         while(!todo.empty()){
+            // Takes the front queue
             auto p = todo.front();
             todo.pop();
+            // Node
             TreeNode* node = p.first;
+            // Vertical Line of that node
             int x = p.second.first;
+            // Horizontal Level of that node
             int y = p.second.second;
             nodes[x][y].insert(node -> val);
 
@@ -35,7 +40,7 @@ public:
                 todo.push({node -> right, {x + 1, y + 1}});
             }
         } 
-
+        // List stores the all nodes -> result
         vector<vector<int>> ans;
         for(auto p : nodes){
             vector<int> col;
