@@ -17,3 +17,57 @@ vector<int> findTwoElement(vector<int>& arr) {
         return {(int)x, (int)y};
         
     }
+
+
+class Solution {
+  public:
+    vector<int> findTwoElement(vector<int>& arr) {
+        int n = arr.size();
+        int xr = 0;
+        for(int i = 0; i < n; i++){
+            xr ^= arr[i];
+            xr ^= (i + 1); // value = 4
+        }
+        
+        // Finding the bitNumber
+        int bitNo = 0;
+        while(1){
+            if((xr & (1 << bitNo)) != 0){
+                break;
+            }
+            bitNo++;
+        }
+        
+        // Segregating number on behalf of bit
+        int zero = 0;
+        int one = 0;
+        for(int i = 0; i < n; i++){
+            // Part of 1 club
+            if((arr[i] & (1 << bitNo)) != 0){
+                one ^= arr[i];
+            } 
+            // Part of zero club
+            else {
+                zero ^= arr[i];
+            }
+        }
+        
+        for(int i = 1; i <= n; i++){
+            if((i & (1 << bitNo)) != 0){
+                one ^= i;
+            } else {
+                zero ^= i;
+            }
+        }
+        // Identifing the missing and repeating number
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == zero) {
+                cnt++;
+            }
+        }
+        
+        if(cnt == 2) return {zero, one};
+        return {one, zero};
+    }
+};
